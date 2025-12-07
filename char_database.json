@@ -1,6 +1,702 @@
 [
-    { "id": 1, "char": "亘", "pinyin": "gèn", "wrongOptions": ["yuán", "héng", "gèng"], "explanation": "空间和时间上延续不断" },
-    { "id": 2, "char": "仄", "pinyin": "zè", "wrongOptions": ["rèn", "cè", "zé"], "explanation": "倾斜、狭窄，或指平仄中的仄声" },
-    // ... 复制所有20个汉字数据
-    { "id": 20, "char": "墉", "pinyin": "yōng", "wrongOptions": ["yóng", "táng", "yǒng"], "explanation": "城墙、高墙" }
+  {
+    "id": 1,
+    "char": "蔼",
+    "pinyin": "ǎi",
+    "wrongOptions": ["āi", "ài", "ěi"],
+    "explanation": "和气、和善，如“和蔼可亲”，也指草木茂盛"
+  },
+  {
+    "id": 2,
+    "char": "隘",
+    "pinyin": "ài",
+    "wrongOptions": ["āi", "ǎi", "è"],
+    "explanation": "狭窄、险要的地方，如“关隘”“狭隘”，也指心胸不宽广"
+  },
+  {
+    "id": 3,
+    "char": "庵",
+    "pinyin": "ān",
+    "wrongOptions": ["ǎn", "àn", "āng"],
+    "explanation": "小草屋，也指尼姑住的寺庙，如“庵堂”“尼姑庵”"
+  },
+  {
+    "id": 4,
+    "char": "鞍",
+    "pinyin": "ān",
+    "wrongOptions": ["ǎn", "àn", "āng"],
+    "explanation": "放在马背上的坐具，如“马鞍”“鞍鞯”"
+  },
+  {
+    "id": 5,
+    "char": "黯",
+    "pinyin": "àn",
+    "wrongOptions": ["ān", "ǎn", "àng"],
+    "explanation": "阴暗、昏黑，如“黯淡”“黯然神伤”"
+  },
+  {
+    "id": 6,
+    "char": "肮",
+    "pinyin": "āng",
+    "wrongOptions": ["áng", "ǎng", "àng"],
+    "explanation": "用于“肮脏”，指不干净、不道德"
+  },
+  {
+    "id": 7,
+    "char": "拗",
+    "pinyin": "ào",
+    "wrongOptions": ["ǎo", "niù", "āo"],
+    "explanation": "不顺、不顺从，如“拗口”；也读 ǎo（拗断）、niù（执拗）"
+  },
+  {
+    "id": 8,
+    "char": "袄",
+    "pinyin": "ǎo",
+    "wrongOptions": ["āo", "ào", "ōu"],
+    "explanation": "有里子的上衣，如“棉袄”“夹袄”“皮袄”"
+  },
+  {
+    "id": 9,
+    "char": "懊",
+    "pinyin": "ào",
+    "wrongOptions": ["ǎo", "āo", "òu"],
+    "explanation": "烦恼、悔恨，如“懊悔”“懊恼”“懊丧”"
+  },
+  {
+    "id": 10,
+    "char": "扒",
+    "pinyin": "bā",
+    "wrongOptions": ["pá", "bǎ", "bà"],
+    "explanation": "用手或工具挖取、分开，如“扒土”“扒开”；也读 pá（扒手、扒窃）"
+  },
+  {
+    "id": 11,
+    "char": "芭",
+    "pinyin": "bā",
+    "wrongOptions": ["bá", "bǎ", "bà"],
+    "explanation": "指芭蕉，如“芭蕉”“芭叶”“芭蕾舞”"
+  },
+  {
+    "id": 12,
+    "char": "疤",
+    "pinyin": "bā",
+    "wrongOptions": ["bá", "bǎ", "bà"],
+    "explanation": "伤口愈合后留下的痕迹，如“伤疤”“疤痕”“疤瘌”"
+  },
+  {
+    "id": 13,
+    "char": "捌",
+    "pinyin": "bā",
+    "wrongOptions": ["bá", "bǎ", "bà"],
+    "explanation": "数字“八”的大写形式，用于票据、账目等防止涂改"
+  },
+  {
+    "id": 14,
+    "char": "跋",
+    "pinyin": "bá",
+    "wrongOptions": ["bā", "bǎ", "bà"],
+    "explanation": "在山上行走，如“跋涉”；也指文章后的附言，如“跋文”"
+  },
+  {
+    "id": 15,
+    "char": "靶",
+    "pinyin": "bǎ",
+    "wrongOptions": ["bā", "bá", "bà"],
+    "explanation": "练习射击的目标，如“靶子”“靶场”“靶心”"
+  },
+  {
+    "id": 16,
+    "char": "掰",
+    "pinyin": "bāi",
+    "wrongOptions": ["bái", "bǎi", "bài"],
+    "explanation": "用手把东西分开或折断，如“掰开”“掰断”“掰手腕”"
+  },
+  {
+    "id": 17,
+    "char": "扳",
+    "pinyin": "bān",
+    "wrongOptions": ["bǎn", "bàn", "pān"],
+    "explanation": "用手转或拉，如“扳动”“扳手”“扳道工”"
+  },
+  {
+    "id": 18,
+    "char": "拌",
+    "pinyin": "bàn",
+    "wrongOptions": ["bān", "bǎn", "pàn"],
+    "explanation": "搅和、混合，如“搅拌”“凉拌”“拌料”"
+  },
+  {
+    "id": 19,
+    "char": "绊",
+    "pinyin": "bàn",
+    "wrongOptions": ["bān", "bǎn", "pàn"],
+    "explanation": "挡住或缠住，使跌倒或不便，如“绊倒”“羁绊”“绊脚”"
+  },
+  {
+    "id": 20,
+    "char": "梆",
+    "pinyin": "bāng",
+    "wrongOptions": ["báng", "bǎng", "bàng"],
+    "explanation": "梆子，一种打击乐器，也指敲打声，如“梆声”“梆子戏”"
+  },
+  {
+    "id": 21,
+    "char": "绑",
+    "pinyin": "bǎng",
+    "wrongOptions": ["bāng", "báng", "bàng"],
+    "explanation": "用绳、带等捆扎，如“捆绑”“绑票”“绑带”"
+  },
+  {
+    "id": 22,
+    "char": "榜",
+    "pinyin": "bǎng",
+    "wrongOptions": ["bāng", "báng", "bàng"],
+    "explanation": "张贴的文告、名单，如“榜单”“榜样”“榜文”"
+  },
+  {
+    "id": 23,
+    "char": "蚌",
+    "pinyin": "bàng",
+    "wrongOptions": ["bèng", "bāng", "bǎng"],
+    "explanation": "软体动物，如“河蚌”“珍珠蚌”；也读 bèng（蚌埠，地名）"
+  },
+  {
+    "id": 24,
+    "char": "谤",
+    "pinyin": "bàng",
+    "wrongOptions": ["bāng", "bǎng", "páng"],
+    "explanation": "恶意攻击、说坏话，如“诽谤”“谤言”“毁谤”"
+  },
+  {
+    "id": 25,
+    "char": "磅",
+    "pinyin": "bàng",
+    "wrongOptions": ["páng", "bāng", "bǎng"],
+    "explanation": "重量单位，如“磅秤”“英镑”；也读 páng（磅礴，形容气势盛大）"
+  },
+  {
+    "id": 26,
+    "char": "镑",
+    "pinyin": "bàng",
+    "wrongOptions": ["bāng", "bǎng", "páng"],
+    "explanation": "英国等国的货币单位，如“英镑”“镑币”"
+  },
+  {
+    "id": 27,
+    "char": "苞",
+    "pinyin": "bāo",
+    "wrongOptions": ["báo", "bǎo", "bào"],
+    "explanation": "花未开时包着花朵的小叶片，如“花苞”“苞米”“苞蕾”"
+  },
+  {
+    "id": 28,
+    "char": "褒",
+    "pinyin": "bāo",
+    "wrongOptions": ["báo", "bǎo", "bào"],
+    "explanation": "赞扬、夸奖，如“褒奖”“褒扬”“褒义词”"
+  },
+  {
+    "id": 29,
+    "char": "雹",
+    "pinyin": "báo",
+    "wrongOptions": ["bāo", "bǎo", "bào"],
+    "explanation": "冰雹，从云中降下的冰块，如“雹子”“雹灾”"
+  },
+  {
+    "id": 30,
+    "char": "鲍",
+    "pinyin": "bào",
+    "wrongOptions": ["bāo", "báo", "bǎo"],
+    "explanation": "鲍鱼，一种海产软体动物，也用作姓氏"
+  },
+  {
+    "id": 31,
+    "char": "狈",
+    "pinyin": "bèi",
+    "wrongOptions": ["bēi", "běi", "bèi"],
+    "explanation": "传说中的野兽，常与“狼”搭配，如“狼狈”“狼狈不堪”"
+  },
+  {
+    "id": 32,
+    "char": "悖",
+    "pinyin": "bèi",
+    "wrongOptions": ["bēi", "běi", "bó"],
+    "explanation": "违背、相反，如“悖逆”“悖论”“悖谬”"
+  },
+  {
+    "id": 33,
+    "char": "惫",
+    "pinyin": "bèi",
+    "wrongOptions": ["bēi", "běi", "bài"],
+    "explanation": "极度疲乏，如“疲惫”“惫懒”“疲惫不堪”"
+  },
+  {
+    "id": 34,
+    "char": "笨",
+    "pinyin": "bèn",
+    "wrongOptions": ["bēn", "běn", "bén"],
+    "explanation": "头脑不灵活、反应慢，如“笨蛋”“笨拙”“笨手笨脚”"
+  },
+  {
+    "id": 35,
+    "char": "绷",
+    "pinyin": "bēng",
+    "wrongOptions": ["běng", "bèng", "bēn"],
+    "explanation": "拉紧、张紧，如“绷紧”“绷带”；也读 běng（绷脸）、bèng（绷裂）"
+  },
+  {
+    "id": 36,
+    "char": "泵",
+    "pinyin": "bèng",
+    "wrongOptions": ["bēng", "běng", "bèn"],
+    "explanation": "一种输送流体的机械，如“水泵”“油泵”“气泵”"
+  },
+  {
+    "id": 37,
+    "char": "蹦",
+    "pinyin": "bèng",
+    "wrongOptions": ["bēng", "běng", "bèn"],
+    "explanation": "跳，如“蹦跳”“蹦床”“蹦极”"
+  },
+  {
+    "id": 38,
+    "char": "匕",
+    "pinyin": "bǐ",
+    "wrongOptions": ["bī", "bì", "pǐ"],
+    "explanation": "古代一种短刀，如“匕首”“刀匕”"
+  },
+  {
+    "id": 39,
+    "char": "鄙",
+    "pinyin": "bǐ",
+    "wrongOptions": ["bī", "bì", "pǐ"],
+    "explanation": "粗俗、低下，如“卑鄙”“鄙陋”；也指轻视，如“鄙视”"
+  },
+  {
+    "id": 40,
+    "char": "庇",
+    "pinyin": "bì",
+    "wrongOptions": ["bī", "bǐ", "pì"],
+    "explanation": "遮蔽、保护，如“庇护”“庇佑”“包庇”"
+  },
+  {
+    "id": 41,
+    "char": "毙",
+    "pinyin": "bì",
+    "wrongOptions": ["bī", "bǐ", "pì"],
+    "explanation": "死、处死，如“毙命”“枪毙”“毙命”"
+  },
+  {
+    "id": 42,
+    "char": "痹",
+    "pinyin": "bì",
+    "wrongOptions": ["bī", "bǐ", "pì"],
+    "explanation": "身体某部分失去知觉，如“麻痹”“痹症”“风湿痹”"
+  },
+  {
+    "id": 43,
+    "char": "弊",
+    "pinyin": "bì",
+    "wrongOptions": ["bī", "bǐ", "pì"],
+    "explanation": "害处、毛病，如“弊端”“弊病”“作弊”"
+  },
+  {
+    "id": 44,
+    "char": "璧",
+    "pinyin": "bì",
+    "wrongOptions": ["bī", "bǐ", "pì"],
+    "explanation": "平而圆、中心有孔的玉，如“璧玉”“白璧无瑕”"
+  },
+  {
+    "id": 45,
+    "char": "贬",
+    "pinyin": "biǎn",
+    "wrongOptions": ["biān", "biàn", "piǎn"],
+    "explanation": "降低、给予不好的评价，如“贬低”“贬义”“贬值”"
+  },
+  {
+    "id": 46,
+    "char": "匾",
+    "pinyin": "biǎn",
+    "wrongOptions": ["biān", "biàn", "piǎn"],
+    "explanation": "题字的横牌，如“牌匾”“匾额”“匾文”"
+  },
+  {
+    "id": 47,
+    "char": "辫",
+    "pinyin": "biàn",
+    "wrongOptions": ["biān", "biǎn", "piàn"],
+    "explanation": "把头发分股编成的带状物，如“辫子”“发辫”“小辫”"
+  },
+  {
+    "id": 48,
+    "char": "彪",
+    "pinyin": "biāo",
+    "wrongOptions": ["biáo", "biǎo", "biào"],
+    "explanation": "小虎，也指身材高大，如“彪形大汉”“彪悍”"
+  },
+  {
+    "id": 49,
+    "char": "憋",
+    "pinyin": "biē",
+    "wrongOptions": ["bié", "biě", "biè"],
+    "explanation": "堵住、抑制，如“憋气”“憋闷”“憋住”"
+  },
+  {
+    "id": 50,
+    "char": "鳖",
+    "pinyin": "biē",
+    "wrongOptions": ["bié", "biě", "biè"],
+    "explanation": "甲鱼、团鱼，一种水生爬行动物，如“鳖甲”“鳖裙”"
+  },
+  {
+    "id": 51,
+    "char": "瘪",
+    "pinyin": "biě",
+    "wrongOptions": ["biē", "bié", "biè"],
+    "explanation": "物体表面凹下去，如“瘪三”“瘪了”；也读 biē（瘪谷）"
+  },
+  {
+    "id": 52,
+    "char": "彬",
+    "pinyin": "bīn",
+    "wrongOptions": ["bīn", "bǐn", "bìn"],
+    "explanation": "形容文雅，如“彬彬有礼”“文质彬彬”"
+  },
+  {
+    "id": 53,
+    "char": "斌",
+    "pinyin": "bīn",
+    "wrongOptions": ["bīn", "bǐn", "bìn"],
+    "explanation": "同“彬”，形容文雅，也用作人名"
+  },
+  {
+    "id": 54,
+    "char": "缤",
+    "pinyin": "bīn",
+    "wrongOptions": ["bīn", "bǐn", "bìn"],
+    "explanation": "繁多、杂乱，如“缤纷”“五彩缤纷”"
+  },
+  {
+    "id": 55,
+    "char": "濒",
+    "pinyin": "bīn",
+    "wrongOptions": ["bīn", "bǐn", "bìn"],
+    "explanation": "接近、临近，如“濒临”“濒死”“濒海”"
+  },
+  {
+    "id": 56,
+    "char": "鬓",
+    "pinyin": "bìn",
+    "wrongOptions": ["bīn", "bǐn", "pìn"],
+    "explanation": "耳朵旁边的头发，如“鬓角”“鬓发”“两鬓”"
+  },
+  {
+    "id": 57,
+    "char": "秉",
+    "pinyin": "bǐng",
+    "wrongOptions": ["bīng", "bìng", "pǐng"],
+    "explanation": "拿着、持，如“秉笔”“秉烛”；也指掌握，如“秉政”"
+  },
+  {
+    "id": 58,
+    "char": "禀",
+    "pinyin": "bǐng",
+    "wrongOptions": ["bīng", "bìng", "pǐng"],
+    "explanation": "报告、禀报，如“禀报”“禀明”；也指天赋，如“禀赋”"
+  },
+  {
+    "id": 59,
+    "char": "菠",
+    "pinyin": "bō",
+    "wrongOptions": ["bó", "bǒ", "bò"],
+    "explanation": "菠菜，一种常见蔬菜，如“菠菜”“菠薐”"
+  },
+  {
+    "id": 60,
+    "char": "舶",
+    "pinyin": "bó",
+    "wrongOptions": ["bō", "bǒ", "bò"],
+    "explanation": "航海的大船，如“船舶”“舶来品”“海舶”"
+  },
+  {
+    "id": 61,
+    "char": "渤",
+    "pinyin": "bó",
+    "wrongOptions": ["bō", "bǒ", "bò"],
+    "explanation": "渤海，我国的内海，如“渤海湾”“渤海口”"
+  },
+  {
+    "id": 62,
+    "char": "跛",
+    "pinyin": "bǒ",
+    "wrongOptions": ["bō", "bó", "bò"],
+    "explanation": "腿或脚有毛病，走路不平衡，如“跛脚”“跛行”"
+  },
+  {
+    "id": 63,
+    "char": "簸",
+    "pinyin": "bǒ",
+    "wrongOptions": ["bō", "bó", "bò"],
+    "explanation": "用簸箕颠动粮食，如“簸谷”；也读 bò（簸箕，一种器具）"
+  },
+  {
+    "id": 64,
+    "char": "哺",
+    "pinyin": "bǔ",
+    "wrongOptions": ["bū", "bú", "bù"],
+    "explanation": "喂不会吃饭的幼儿，如“哺乳”“哺育”“哺养”"
+  },
+  {
+    "id": 65,
+    "char": "怖",
+    "pinyin": "bù",
+    "wrongOptions": ["bū", "bú", "bǔ"],
+    "explanation": "害怕、恐惧，如“恐怖”“可怖”“怖畏”"
+  },
+  {
+    "id": 66,
+    "char": "埠",
+    "pinyin": "bù",
+    "wrongOptions": ["bū", "bú", "bǔ"],
+    "explanation": "码头，也指城市，如“商埠”“埠头”“外埠”"
+  },
+  {
+    "id": 67,
+    "char": "簿",
+    "pinyin": "bù",
+    "wrongOptions": ["bó", "bǒ", "bū"],
+    "explanation": "本子、册籍，如“账簿”“簿册”“簿记”；也读 bó（古同“箔”）"
+  },
+  {
+    "id": 68,
+    "char": "睬",
+    "pinyin": "cǎi",
+    "wrongOptions": ["cāi", "cái", "cài"],
+    "explanation": "理会、搭理，如“理睬”“睬视”“不理不睬”"
+  },
+  {
+    "id": 69,
+    "char": "惭",
+    "pinyin": "cán",
+    "wrongOptions": ["cān", "cǎn", "càn"],
+    "explanation": "羞愧，如“惭愧”“惭怍”“羞惭”"
+  },
+  {
+    "id": 70,
+    "char": "沧",
+    "pinyin": "cāng",
+    "wrongOptions": ["cáng", "cǎng", "càng"],
+    "explanation": "暗绿色，也指寒冷，如“沧海”“沧桑”“沧凉”"
+  },
+  {
+    "id": 71,
+    "char": "糙",
+    "pinyin": "cāo",
+    "wrongOptions": ["cáo", "cǎo", "cào"],
+    "explanation": "不精细、不光滑，如“粗糙”“糙米”“糙纸”"
+  },
+  {
+    "id": 72,
+    "char": "厕",
+    "pinyin": "cè",
+    "wrongOptions": ["si", "cē", "cě"],
+    "explanation": "厕所，如“公厕”“厕纸”；也读 si（古同“厮”）"
+  },
+  {
+    "id": 73,
+    "char": "蹭",
+    "pinyin": "cèng",
+    "wrongOptions": ["cēng", "cěng", "zèng"],
+    "explanation": "摩擦、缓慢移动，如“蹭破”“蹭饭”“磨蹭”"
+  },
+  {
+    "id": 74,
+    "char": "茬",
+    "pinyin": "chá",
+    "wrongOptions": ["chā", "chǎ", "chà"],
+    "explanation": "庄稼收割后留下的根，如“麦茬”“豆茬”；也指次数，如“头茬”"
+  },
+  {
+    "id": 75,
+    "char": "岔",
+    "pinyin": "chà",
+    "wrongOptions": ["chā", "chá", "chǎ"],
+    "explanation": "道路分岔的地方，如“岔路”“岔口”“岔道”"
+  },
+  {
+    "id": 76,
+    "char": "豺",
+    "pinyin": "chái",
+    "wrongOptions": ["chāi", "chǎi", "chài"],
+    "explanation": "豺狼，一种野兽，如“豺狗”“豺狼虎豹”"
+  },
+  {
+    "id": 77,
+    "char": "掺",
+    "pinyin": "chān",
+    "wrongOptions": ["càn", "shǎn", "chǎn"],
+    "explanation": "混合、夹杂，如“掺杂”“掺假”“掺合”；也读 càn（掺挝）、shǎn（掺手）"
+  },
+  {
+    "id": 78,
+    "char": "搀",
+    "pinyin": "chān",
+    "wrongOptions": ["chán", "chǎn", "chàn"],
+    "explanation": "扶、挽，如“搀扶”“搀着”“搀救”"
+  },
+  {
+    "id": 79,
+    "char": "禅",
+    "pinyin": "chán",
+    "wrongOptions": ["shàn", "chǎn", "chàn"],
+    "explanation": "佛教用语，如“禅意”“禅修”“禅宗”；也读 shàn（禅让）"
+  },
+  {
+    "id": 80,
+    "char": "馋",
+    "pinyin": "chán",
+    "wrongOptions": ["chān", "chǎn", "chàn"],
+    "explanation": "贪吃、羡慕，如“馋嘴”“馋涎”“眼馋”"
+  },
+  {
+    "id": 81,
+    "char": "蝉",
+    "pinyin": "chán",
+    "wrongOptions": ["chān", "chǎn", "chàn"],
+    "explanation": "知了，一种昆虫，如“蝉鸣”“蝉联”“蝉蜕”"
+  },
+  {
+    "id": 82,
+    "char": "铲",
+    "pinyin": "chǎn",
+    "wrongOptions": ["chān", "chán", "chàn"],
+    "explanation": "削平、清除的工具，如“铲子”“铲刀”；也指动作，如“铲平”"
+  },
+  {
+    "id": 83,
+    "char": "猖",
+    "pinyin": "chāng",
+    "wrongOptions": ["cháng", "chǎng", "chàng"],
+    "explanation": "凶猛、狂妄，如“猖狂”“猖獗”“猖披”"
+  },
+  {
+    "id": 84,
+    "char": "敞",
+    "pinyin": "chǎng",
+    "wrongOptions": ["chāng", "cháng", "chàng"],
+    "explanation": "宽阔、没有遮挡，如“宽敞”“敞亮”“敞开”"
+  },
+  {
+    "id": 85,
+    "char": "钞",
+    "pinyin": "chāo",
+    "wrongOptions": ["cháo", "chǎo", "chào"],
+    "explanation": "纸币，如“钞票”“现钞”“点钞”"
+  },
+  {
+    "id": 86,
+    "char": "嘲",
+    "pinyin": "cháo",
+    "wrongOptions": ["zhāo", "chāo", "chǎo"],
+    "explanation": "讥笑、讽刺，如“嘲笑”“嘲讽”“嘲弄”；也读 zhāo（嘲哳，形容声音杂乱）"
+  },
+  {
+    "id": 87,
+    "char": "澈",
+    "pinyin": "chè",
+    "wrongOptions": ["chē", "chě", "zhè"],
+    "explanation": "水清、透明，如“清澈”“澄澈”“澈底”"
+  },
+  {
+    "id": 88,
+    "char": "忱",
+    "pinyin": "chén",
+    "wrongOptions": ["chēn", "chěn", "chèn"],
+    "explanation": "真诚的情意，如“热忱”“赤忱”“忱挚”"
+  },
+  {
+    "id": 89,
+    "char": "辰",
+    "pinyin": "chén",
+    "wrongOptions": ["chēn", "chěn", "chèn"],
+    "explanation": "日子、时光，如“良辰”“辰光”；也指地支的第五位"
+  },
+  {
+    "id": 90,
+    "char": "澄",
+    "pinyin": "chéng",
+    "wrongOptions": ["dèng", "chén", "chěng"],
+    "explanation": "水清、清澈，如“澄澈”“澄明”；也读 dèng（澄清，使液体变清）"
+  },
+  {
+    "id": 91,
+    "char": "逞",
+    "pinyin": "chěng",
+    "wrongOptions": ["chéng", "chèng", "chēng"],
+    "explanation": "显示、夸耀，如“逞能”“逞强”“逞凶”"
+  },
+  {
+    "id": 92,
+    "char": "秤",
+    "pinyin": "chèng",
+    "wrongOptions": ["chēng", "chéng", "chěng"],
+    "explanation": "衡量重量的器具，如“秤杆”“秤砣”“台秤”"
+  },
+  {
+    "id": 93,
+    "char": "痴",
+    "pinyin": "chī",
+    "wrongOptions": ["chí", "chǐ", "chì"],
+    "explanation": "傻、愚笨，如“痴呆”“痴心”“痴迷”"
+  },
+  {
+    "id": 94,
+    "char": "弛",
+    "pinyin": "chí",
+    "wrongOptions": ["chī", "chǐ", "chì"],
+    "explanation": "放松、解除，如“松弛”“弛缓”“弛禁”"
+  },
+  {
+    "id": 95,
+    "char": "侈",
+    "pinyin": "chǐ",
+    "wrongOptions": ["chī", "chí", "chì"],
+    "explanation": "浪费、过分，如“奢侈”“侈靡”“侈谈”"
+  },
+  {
+    "id": 96,
+    "char": "耻",
+    "pinyin": "chǐ",
+    "wrongOptions": ["chī", "chí", "chì"],
+    "explanation": "羞愧、耻辱，如“羞耻”“耻辱”“耻笑”"
+  },
+  {
+    "id": 97,
+    "char": "宠",
+    "pinyin": "chǒng",
+    "wrongOptions": ["chōng", "chóng", "chòng"],
+    "explanation": "偏爱、溺爱，如“宠爱”“宠儿”“宠信”"
+  },
+  {
+    "id": 98,
+    "char": "畴",
+    "pinyin": "chóu",
+    "wrongOptions": ["chōu", "chǒu", "chòu"],
+    "explanation": "田地、类别，如“田畴”“范畴”“畴昔”"
+  },
+  {
+    "id": 99,
+    "char": "稠",
+    "pinyin": "chóu",
+    "wrongOptions": ["chōu", "chǒu", "chòu"],
+    "explanation": "密、浓，如“稠密”“稠粥”“稠人广众”"
+  },
+  {
+    "id": 100,
+    "char": "锄",
+    "pinyin": "chú",
+    "wrongOptions": ["chū", "chǔ", "chù"],
+    "explanation": "松土除草的工具，也指动作，如“锄头”“锄地”“锄草”"
+  }
 ]
