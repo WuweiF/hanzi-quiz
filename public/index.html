@@ -110,8 +110,26 @@
                 console.error('字库加载失败，使用本地备用数据：', error);
                 // 备用本地数据（防止后端故障）
                 charDatabase = [
-                    { "id": 1, "char": "亘", "pinyin": "gèn", "wrongOptions": ["yuán", "héng", "gèng"], "explanation": "空间和时间上延续不断" },
-                    // ... 保留原有本地数据
+                    { id: 1, char: "亘", pinyin: "gèn", wrongOptions: ["yuán", "héng", "gèng"], explanation: "空间和时间上延续不断" },
+                    { id: 2, char: "仄", pinyin: "zè", wrongOptions: ["rèn", "cè", "zé"], explanation: "倾斜、狭窄，或指平仄中的仄声" },
+                    { id: 3, char: "囿", pinyin: "yòu", wrongOptions: ["yǒu", "nài", "yōu"], explanation: "局限、拘泥，或指养动物的园子" },
+                    { id: 4, char: "彖", pinyin: "tuàn", wrongOptions: ["chuàn", "shuàn", "tuán"], explanation: "《易经》中解释卦辞的文字" },
+                    { id: 5, char: "卮", pinyin: "zhī", wrongOptions: ["zhì", "jǐ", "zhǐ"], explanation: "古代一种酒器" },
+                    { id: 6, char: "丏", pinyin: "miǎn", wrongOptions: ["gài", "miàn", "wǎn"], explanation: "遮蔽、看不见" },
+                    { id: 7, char: "刖", pinyin: "yuè", wrongOptions: ["jié", "lǜ", "yuē"], explanation: "古代一种砍掉脚的刑罚" },
+                    { id: 8, char: "垚", pinyin: "yáo", wrongOptions: ["tǔ", "yào", "zhuàng"], explanation: "古同“尧”，形容山高" },
+                    { id: 9, char: "冂", pinyin: "jiōng", wrongOptions: ["mén", "tóng", "jiǒng"], explanation: "城外、郊外的地方" },
+                    { id: 10, char: "仂", pinyin: "lè", wrongOptions: ["lì", "lüè", "léi"], explanation: "余数、零头" },
+                    { id: 11, char: "仝", pinyin: "tóng", wrongOptions: ["quán", "gòng", "tǒng"], explanation: "同“同”，也是姓氏" },
+                    { id: 12, char: "讪", pinyin: "shàn", wrongOptions: ["xiān", "càn", "shān"], explanation: "讥笑、勉强装笑" },
+                    { id: 13, char: "卣", pinyin: "yǒu", wrongOptions: ["yòu", "lǚ", "yǒu"], explanation: "古代一种酒器" },
+                    { id: 14, char: "哙", pinyin: "kuài", wrongOptions: ["huì", "kuì", "guì"], explanation: "吞咽，也是姓氏" },
+                    { id: 15, char: "佴", pinyin: "èr", wrongOptions: ["ěr", "nài", "ér"], explanation: "副、贰，也是姓氏" },
+                    { id: 16, char: "勰", pinyin: "xié", wrongOptions: ["jié", "xiē", "jiē"], explanation: "和谐、协调" },
+                    { id: 17, char: "卺", pinyin: "jǐn", wrongOptions: ["jìn", "jié", "qín"], explanation: "古代结婚时用的酒器" },
+                    { id: 18, char: "厝", pinyin: "cuò", wrongOptions: ["xī", "cuō", "chuò"], explanation: "放置、停柩，或指闽南话中的房屋" },
+                    { id: 19, char: "彖", pinyin: "tuàn", wrongOptions: ["chuàn", "shuàn", "tuán"], explanation: "《易经》中解释卦辞的文字" },
+                    { id: 20, char: "墉", pinyin: "yōng", wrongOptions: ["yóng", "táng", "yǒng"], explanation: "城墙、高墙" }
                 ];
             }
         }
@@ -127,7 +145,7 @@
         // 修改collectData函数，对接后端接口
         function collectData(charId, isCorrect) {
             // 发送数据到后端
-            fetch('https://你的后端域名/api/record-answer', { // 后续替换为实际域名
+            fetch('https://hanzi-quiz-server.onrender.com/api/record-answer', { // 后续替换为实际域名
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
