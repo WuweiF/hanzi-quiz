@@ -1,0 +1,6 @@
+[
+    { "id": 1, "char": "亘", "pinyin": "gèn", "wrongOptions": ["yuán", "héng", "gèng"], "explanation": "空间和时间上延续不断" },
+    { "id": 2, "char": "仄", "pinyin": "zè", "wrongOptions": ["rèn", "cè", "zé"], "explanation": "倾斜、狭窄，或指平仄中的仄声" },
+    // ... 复制所有20个汉字数据
+    { "id": 20, "char": "墉", "pinyin": "yōng", "wrongOptions": ["yóng", "táng", "yǒng"], "explanation": "城墙、高墙" }
+]
