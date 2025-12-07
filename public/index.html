@@ -103,7 +103,7 @@
         // 新增：从后端获取字库
         async function fetchCharDatabase() {
             try {
-                const response = await fetch('https://hanzi-quiz-server.onrender.com/api/char-database'); // 后续替换为实际域名
+                const response = await fetch('https://hanzi-quiz-server.onrender.com/api/char_database'); // 后续替换为实际域名
                 charDatabase = await response.json();
                 console.log('字库加载成功：', charDatabase);
             } catch (error) {
