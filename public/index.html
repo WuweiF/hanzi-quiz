@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>汉字小达人 - 初中生识字检测</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <style>
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        .correct { animation: correct 0.5s ease-in-out; }
+        .wrong { animation: wrong 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes correct { 0% { background: #dcfce7; } 50% { background: #86efac; } 100% { background: #dcfce7; } }
+        @keyframes wrong { 0% { background: #fee2e2; } 50% { background: #fca5a5; } 100% { background: #fee2e2; } }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- 顶部导航 -->
+    <nav class="bg-blue-600 text-white p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold">汉字小达人 <span class="text-sm opacity-80">初中生识字检测</span></h1>
+            <div class="flex items-center gap-4">
+                <span id="progress-text">进度：0/0</span>
+                <span id="timer" class="bg-blue-700 px-3 py-1 rounded-full">00:00</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 答题区域 -->
+    <main class="container mx-auto p-4 md:p-8 max-w-3xl">
+        <!-- 答题卡片 -->
+        <div id="question-card" class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8 fade-in hidden">
+            <div class="text-center mb-6">
+                <span id="current-char" class="text-6xl md:text-8xl font-bold text-gray-800"></span>
+                <p class="text-gray-500 mt-2" id="char-hint">点击选项选择正确读音</p>
+            </div>
+
+            <!-- 选项区域（拼音选择题） -->
+            <div id="options-container" class="grid grid-cols-2 gap-4 mb-6">
+                <!-- 选项将通过JS动态生成 -->
+            </div>
+
+            <!-- 反馈区域 -->
+            <div id="feedback" class="hidden text-center py-2 rounded-lg mb-4"></div>
+
+            <!-- 下一题按钮 -->
+            <button id="next-btn" class="hidden w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                下一题 <i class="fa fa-arrow-right ml-2"></i>
+            </button>
+        </div>
+
+        <!-- 开始答题按钮 -->
+        <div id="start-section" class="text-center py-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">欢迎参与汉字识字检测</h2>
+            <p class="text-gray-600 mb-8">本次检测将随机抽取20个汉字，检验你的识字水平，开始挑战吧！</p>
+            <button id="start-btn" class="bg-green-600 text-white px-8 py-4 rounded-lg text-xl hover:bg-green-700 transition-colors shadow-md">
+                <i class="fa fa-play-circle mr-2"></i> 开始答题
+            </button>
+        </div>
+
+        <!-- 答题结果页 -->
+        <div id="result-section" class="hidden bg-white rounded-xl shadow-lg p-6 md:p-8">
+            <h2 class="text-2xl font-bold text-center mb-6">答题完成！</h2>
+            <div class="grid grid-cols-2 gap-6 mb-8">
+                <div class="bg-blue-50 p-4 rounded-lg text-center">
+                    <p class="text-gray-600 mb-1">总题数</p>
+                    <p class="text-3xl font-bold text-blue-600" id="total-count">0</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg text-center">
+                    <p class="text-gray-600 mb-1">正确数</p>
+                    <p class="text-3xl font-bold text-green-600" id="correct-count">0</p>
+                </div>
+                <div class="bg-yellow-50 p-4 rounded-lg text-center">
+                    <p class="text-gray-600 mb-1">正确率</p>
+                    <p class="text-3xl font-bold text-yellow-600" id="accuracy-rate">0%</p>
+                </div>
+                <div class="bg-purple-50 p-4 rounded-lg text-center">
+                    <p class="text-gray-600 mb-1">识字等级</p>
+                    <p class="text-3xl font-bold text-purple-600" id="level">--</p>
+                </div>
+            </div>
+
+            <!-- 错误字列表 -->
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold mb-3">需加强的汉字：</h3>
+                <div id="wrong-chars" class="flex flex-wrap gap-3">
+                    <!-- 错误字将动态生成 -->
+                </div>
+            </div>
+
+            <!-- 重新答题按钮 -->
+            <button id="restart-btn" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                <i class="fa fa-refresh mr-2"></i> 重新答题
+            </button>
+        </div>
+    </main>
+
+    <script>
+        
+        let charDatabase = [];
+        // 新增：从后端获取字库
+        async function fetchCharDatabase() {
+            try {
+                const response = await fetch('https://你的后端域名/api/char-database'); // 后续替换为实际域名
+                charDatabase = await response.json();
+                console.log('字库加载成功：', charDatabase);
+            } catch (error) {
+                console.error('字库加载失败，使用本地备用数据：', error);
+                // 备用本地数据（防止后端故障）
+                charDatabase = [
+                    { "id": 1, "char": "亘", "pinyin": "gèn", "wrongOptions": ["yuán", "héng", "gèng"], "explanation": "空间和时间上延续不断" },
+                    // ... 保留原有本地数据
+                ];
+            }
+        }
+        
+        // 修改init函数，先加载字库
+        function init() {
+            fetchCharDatabase(); // 新增
+            startBtn.addEventListener('click', startQuiz);
+            restartBtn.addEventListener('click', restartQuiz);
+            nextBtn.addEventListener('click', showNextQuestion);
+        }
+        
+        // 修改collectData函数，对接后端接口
+        function collectData(charId, isCorrect) {
+            // 发送数据到后端
+            fetch('https://你的后端域名/api/record-answer', { // 后续替换为实际域名
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    charId: charId,
+                    isCorrect: isCorrect,
+                    timestamp: new Date().toISOString(),
+                    duration: Math.floor((Date.now() - startTime) / 1000)
+                })
+            })
+            .then(res => res.json())
+            .then(data => console.log('数据提交成功：', data))
+            .catch(error => console.error('数据提交失败：', error));
+        }
+
+        // 全局变量
+        let currentQuestions = []; // 本次答题的题目列表
+        let currentIndex = 0;      // 当前答题索引
+        let correctCount = 0;      // 正确数
+        let wrongChars = [];       // 错误字列表
+        let timer = null;          // 计时定时器
+        let startTime = 0;         // 开始时间
+
+        // DOM元素
+        const startBtn = document.getElementById('start-btn');
+        const restartBtn = document.getElementById('restart-btn');
+        const startSection = document.getElementById('start-section');
+        const questionCard = document.getElementById('question-card');
+        const resultSection = document.getElementById('result-section');
+        const currentChar = document.getElementById('current-char');
+        const optionsContainer = document.getElementById('options-container');
+        const feedback = document.getElementById('feedback');
+        const nextBtn = document.getElementById('next-btn');
+        const progressText = document.getElementById('progress-text');
+        const timerEl = document.getElementById('timer');
+
+        // 初始化函数
+        function init() {
+            // 绑定事件
+            startBtn.addEventListener('click', startQuiz);
+            restartBtn.addEventListener('click', restartQuiz);
+            nextBtn.addEventListener('click', showNextQuestion);
+        }
+
+        // 开始答题
+        function startQuiz() {
+            // 随机抽取20个题目（可配置数量）
+            currentQuestions = [...charDatabase].sort(() => 0.5 - Math.random()).slice(0, 20);
+            currentIndex = 0;
+            correctCount = 0;
+            wrongChars = [];
+
+            // 隐藏开始区域，显示答题卡片
+            startSection.classList.add('hidden');
+            questionCard.classList.remove('hidden');
+
+            // 开始计时
+            startTime = Date.now();
+            startTimer();
+
+            // 显示第一题
+            showCurrentQuestion();
+            updateProgress();
+        }
+
+        // 重新答题
+        function restartQuiz() {
+            resultSection.classList.add('hidden');
+            startSection.classList.remove('hidden');
+            clearInterval(timer);
+            timerEl.textContent = "00:00";
+        }
+
+        // 显示当前题目
+        function showCurrentQuestion() {
+            // 重置反馈和下一题按钮
+            feedback.classList.add('hidden');
+            nextBtn.classList.add('hidden');
+            optionsContainer.innerHTML = '';
+            feedback.className = 'hidden text-center py-2 rounded-lg mb-4';
+
+            const question = currentQuestions[currentIndex];
+            currentChar.textContent = question.char;
+
+            // 生成选项（正确选项+错误选项，随机排序）
+            const allOptions = [...question.wrongOptions, question.pinyin].sort(() => 0.5 - Math.random());
+            allOptions.forEach(option => {
+                const optionBtn = document.createElement('button');
+                optionBtn.className = 'border border-gray-300 rounded-lg py-3 px-4 hover:bg-gray-50 transition-colors text-lg';
+                optionBtn.textContent = option;
+                optionBtn.addEventListener('click', () => checkAnswer(option, question.pinyin));
+                optionsContainer.appendChild(optionBtn);
+            });
+        }
+
+        // 检查答案
+        function checkAnswer(selectedOption, correctOption) {
+            // 禁用所有选项
+            const options = optionsContainer.querySelectorAll('button');
+            options.forEach(btn => {
+                btn.disabled = true;
+                // 标记正确/错误选项
+                if (btn.textContent === correctOption) {
+                    btn.classList.remove('border-gray-300');
+                    btn.classList.add('bg-green-500', 'text-white', 'border-green-500');
+                } else if (btn.textContent === selectedOption) {
+                    btn.classList.remove('border-gray-300');
+                    btn.classList.add('bg-red-500', 'text-white', 'border-red-500');
+                }
+            });
+
+            // 显示反馈
+            feedback.classList.remove('hidden');
+            if (selectedOption === correctOption) {
+                // 正确反馈
+                feedback.textContent = '正确！🎉 ' + currentQuestions[currentIndex].explanation;
+                feedback.classList.add('bg-green-100', 'text-green-800', 'correct');
+                correctCount++;
+            } else {
+                // 错误反馈
+                feedback.textContent = `错误 😓 正确读音是：${correctOption}，${currentQuestions[currentIndex].explanation}`;
+                feedback.classList.add('bg-red-100', 'text-red-800', 'wrong');
+                wrongChars.push(currentQuestions[currentIndex].char);
+            }
+
+            // 显示下一题按钮
+            nextBtn.classList.remove('hidden');
+
+            // 收集答题数据（实际项目中发送到后端）
+            collectData(currentQuestions[currentIndex].id, selectedOption === correctOption);
+        }
+
+        // 显示下一题
+        function showNextQuestion() {
+            currentIndex++;
+            if (currentIndex < currentQuestions.length) {
+                // 有下一题
+                showCurrentQuestion();
+                updateProgress();
+            } else {
+                // 答题完成
+                finishQuiz();
+            }
+        }
+
+        // 完成答题
+        function finishQuiz() {
+            // 停止计时
+            clearInterval(timer);
+
+            // 隐藏答题卡片，显示结果
+            questionCard.classList.add('hidden');
+            resultSection.classList.remove('hidden');
+
+            // 计算结果
+            const totalCount = currentQuestions.length;
+            const accuracy = ((correctCount / totalCount) * 100).toFixed(1);
+            let level = '';
+            if (accuracy >= 90) level = '精通';
+            else if (accuracy >= 70) level = '进阶';
+            else if (accuracy >= 50) level = '入门';
+            else level = '需提升';
+
+            // 更新结果页面
+            document.getElementById('total-count').textContent = totalCount;
+            document.getElementById('correct-count').textContent = correctCount;
+            document.getElementById('accuracy-rate').textContent = `${accuracy}%`;
+            document.getElementById('level').textContent = level;
+
+            // 显示错误字
+            const wrongCharsEl = document.getElementById('wrong-chars');
+            wrongCharsEl.innerHTML = '';
+            if (wrongChars.length === 0) {
+                wrongCharsEl.innerHTML = '<p class="text-gray-500">全部正确，太棒了！</p>';
+            } else {
+                wrongChars.forEach(char => {
+                    const charTag = document.createElement('span');
+                    charTag.className = 'bg-red-100 text-red-800 px-3 py-1 rounded-full';
+                    charTag.textContent = char;
+                    wrongCharsEl.appendChild(charTag);
+                });
+            }
+        }
+
+        // 更新进度
+        function updateProgress() {
+            progressText.textContent = `进度：${currentIndex + 1}/${currentQuestions.length}`;
+        }
+
+        // 启动计时器
+        function startTimer() {
+            clearInterval(timer);
+            timer = setInterval(() => {
+                const elapsed = Math.floor((Date.now() - startTime) / 1000);
+                const minutes = Math.floor(elapsed / 60).toString().padStart(2, '0');
+                const seconds = (elapsed % 60).toString().padStart(2, '0');
+                timerEl.textContent = `${minutes}:${seconds}`;
+            }, 1000);
+        }
+
+        // 收集答题数据（模拟发送到后端）
+        function collectData(charId, isCorrect) {
+            // 实际项目中使用fetch发送POST请求
+            console.log('收集数据：', {
+                charId: charId,
+                isCorrect: isCorrect,
+                timestamp: new Date().toISOString(),
+                duration: Math.floor((Date.now() - startTime) / 1000)
+            });
+
+            // 示例：
+            // fetch('/api/record-answer', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify({
+            //         studentId: localStorage.getItem('studentId'), // 实际需学生ID
+            //         charId: charId,
+            //         isCorrect: isCorrect,
+            //         timestamp: new Date().toISOString()
+            //     })
+            // });
+        }
+
+        // 页面加载后初始化
+        window.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
